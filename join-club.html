@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Join Club - Campus Plus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>📝 Join a Club</h1>
+        <p>Become a part of the Campus Plus community</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="notices.html">Notices</a>
+        <a href="study.html">Study Material</a>
+        <a href="events.html">Events</a>
+        <a href="clubs.html">Clubs</a>
+    </nav>
+
+    <main>
+
+        <div class="card">
+
+            <h2>👤 Student Registration</h2>
+
+            <form id="clubForm">
+
+                <label>Full Name</label>
+                <input
+                    type="text"
+                    id="studentName"
+                    placeholder="Enter your name"
+                    required
+                >
+
+                <br><br>
+
+                <label>Roll Number</label>
+                <input
+                    type="text"
+                    id="rollNumber"
+                    placeholder="Enter your roll number"
+                    required
+                >
+
+                <br><br>
+
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your college email"
+                    required
+                >
+
+                <br><br>
+
+                <label>Select Club</label>
+
+                <select id="clubName" required>
+                    <option value="">-- Select Club --</option>
+                    <option value="Coding Club">💻 Coding Club</option>
+                    <option value="Robotics Club">🤖 Robotics Club</option>
+                    <option value="Sports Club">⚽ Sports Club</option>
+                    <option value="Creative Club">🎨 Creative Club</option>
+                </select>
+
+                <br><br>
+
+                <label>Why do you want to join?</label>
+
+                <textarea
+                    id="reason"
+                    rows="4"
+                    placeholder="Write your reason..."
+                    required
+                ></textarea>
+
+                <br><br>
+
+                <button type="submit">
+                    🚀 Submit Application
+                </button>
+
+            </form>
+
+            <br>
+
+            <p id="successMessage"></p>
+
+            <a href="clubs.html">
+                <button>← Back to Clubs</button>
+            </a>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Campus Plus | Made for Students</p>
+    </footer>
+
+    <script>
+
+        // Automatically select club from URL
+        const params = new URLSearchParams(window.location.search);
+        const selectedClub = params.get("club");
+
+        if (selectedClub) {
+            document.getElementById("clubName").value = selectedClub;
+        }
+
+        // Form submission
+        document.getElementById("clubForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("studentName").value;
+            let club = document.getElementById("clubName").value;
+
+            document.getElementById("successMessage").innerHTML =
+                "✅ Thank you, " + name +
+                "! Your application for <strong>" +
+                club +
+                "</strong> has been submitted successfully.";
+
+            document.getElementById("clubForm").reset();
+
+        });
+
+    </script>
+
+</body>
+
+</html>
